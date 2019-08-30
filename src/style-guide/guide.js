@@ -33,7 +33,7 @@ export default function reducer(state = initialState, action) {
                 ...state,
                 typography: action.typography
             }
-        case Types.SET_TYPOGRAPHY:
+        case Types.SET_COMPONENTS:
             return {
                 ...state,
                 components: action.components
@@ -65,3 +65,17 @@ export const components = (components) => {
         components
     }
 }
+
+// Middleware
+export const getFonts = (url) => {
+    return dispatch => {
+       fetch(url)
+       .then(res => res.json())
+       .then(res => dispatch(typography(res.data)))
+       .catch(err => {
+        console.log("Error Reading data " + err);
+      })
+    }
+} 
+
+//AIzaSyDZ1o9r_dT7z-65fz34Nc0AVRHONFKH6_w
