@@ -1,14 +1,19 @@
 import React from 'react';
 
-import {createStore} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
+import thunk from 'redux-thunk';
+
 import 'antd/dist/antd.css';
 
 import reducers from './reducers.js';
 
 import GuideHome from './style-guide/index';
 
-var store = createStore(reducers);
+var store = createStore(
+  reducers,
+  applyMiddleware(thunk)
+);
 
 function App() {
   return (

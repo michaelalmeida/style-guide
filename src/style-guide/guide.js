@@ -50,32 +50,30 @@ export const colors = (colors) => {
         type: Types.SET_COLORS,
         colors
     }
-}
+};
 
 export const typography = (typography) => {
     return {
         type: Types.SET_TYPOGRAPHY,
         typography
     }
-}
+};
 
 export const components = (components) => {
     return {
         type: Types.SET_COMPONENTS,
         components
     }
-}
+};
 
 // Middleware
 export const getFonts = (url) => {
     return dispatch => {
        fetch(url)
        .then(res => res.json())
-       .then(res => dispatch(typography(res.data)))
+       .then(res => dispatch(typography(res.items)))
        .catch(err => {
         console.log("Error Reading data " + err);
       })
     }
-} 
-
-//AIzaSyDZ1o9r_dT7z-65fz34Nc0AVRHONFKH6_w
+};

@@ -3,7 +3,7 @@ import { Layout } from 'antd';
 
 import GuideHeader from './header';
 import GuideMenu from './menu';
-import Typeface from './components/typeface';
+import TypeFaceContainer from './components/typeface';
 
 const { Content, Sider } = Layout;
 
@@ -17,7 +17,7 @@ const GuideHome = () => {
             <GuideMenu />
           </Sider>
           <Content style={{ padding: '0 24px', minHeight: 280 }}>
-            <Typeface />
+            <TypeFaceContainer />
           </Content>
         </Layout>
       </Content>
