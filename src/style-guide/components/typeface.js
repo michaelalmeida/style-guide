@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { Typography, Select, Divider  } from 'antd';
+import { Typography, Select, Divider, Icon } from 'antd';
 
-import {getFonts} from '../guide';
+import { getFonts } from '../guide';
 
 const { Title } = Typography;
 const { Option } = Select;
@@ -15,7 +15,7 @@ class Typeface extends Component {
         super(props);
 
         this.state = {
-            typographyList: []
+            fontList: []
         }
     };
 
@@ -26,29 +26,24 @@ class Typeface extends Component {
     render() {
         return (
             <div>
-                <Title>Select the main Font family</Title>
+                <Title>Typeface</Title>
+                <i>*All fonts from Google Fonts are available here</i>
                 <Divider dashed />
-                    {this.props.typography.length === 0 ? 'a' :
-                        <Select
-                            showSearch
-                            style={{ width: 200 }}
-                            placeholder="Select a person"
-                            optionFilterProp="children"
-                            filterOption={(input, option) =>
-                                option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                            }
-                        >
-
-                            {this.state.typography.map(
-                                font => <Option value={font}>{font}</Option>
-                            )}
-                        
-                        </Select>
-                    }
-                <Title>h1. Ant Design</Title>
-                <Title level={2}>h2. Ant Design</Title>
-                <Title level={3}>h3. Ant Design</Title>
-                <Title level={4}>h4. Ant Design</Title>
+                <Title level={3}>Select all the Font family used in your project in order of priority</Title>
+                {this.props.fontList.length === 0 ? <Icon type="loading" style={{ fontSize: 24 }} spin /> :
+                    <Select
+                        mode="multiple"
+                        style={{ width: '100%' }}
+                        placeholder="Please select"
+                        defaultValue={[]}
+                        maxTagCount={5}
+                    >
+                        {this.props.fontList.map(font =>
+                            <Option key={font.family} value={font.family}>{font.family}</Option>
+                        )}
+                    </Select>
+                }
+                <b>The maximum recommended is two Font Family</b>
             </div>
         );
     }
@@ -56,17 +51,17 @@ class Typeface extends Component {
 
 const mapStateToProps = state => {
     return {
-        typography: state.guide.typography
+        fontList: state.guide.fontList
     };
 };
 
 const mapDispathToProps = dispatch => {
     return {
-        getFonts : (url) => {
+        getFonts: (url) => {
             dispatch(getFonts(url));
         }
     }
-} ;
+};
 
 const TypeFaceContainer = connect(
     mapStateToProps,

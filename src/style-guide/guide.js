@@ -2,12 +2,14 @@
 export const Types = {
     SET_COLORS: 'SET_COLORS',
     SET_TYPOGRAPHY: 'SET_TYPOGRAPHY',
-    SET_COMPONENTS: 'SET_COMPONENTS'
+    SET_COMPONENTS: 'SET_COMPONENTS',
+    GET_FONTLIST: 'GET_FONTLIST',
 };
 
 // Reducer 
 export const initialState = {
     colors: [],
+    fontList: [], 
     typography: {
         primary: 'Arial, Helvetica, sans-serif',
         secondary: 'sans-serif'
@@ -28,10 +30,10 @@ export default function reducer(state = initialState, action) {
                 ...state,
                 colors: action.colors
             }
-        case Types.SET_TYPOGRAPHY:
+        case Types.GET_FONTLIST:
             return {
                 ...state,
-                typography: action.typography
+                fontList: action.fontList
             }
         case Types.SET_COMPONENTS:
             return {
@@ -52,12 +54,13 @@ export const colors = (colors) => {
     }
 };
 
-export const typography = (typography) => {
+export const fontList = (fontList) => {
     return {
-        type: Types.SET_TYPOGRAPHY,
-        typography
+        type: Types.GET_FONTLIST,
+        fontList
     }
 };
+
 
 export const components = (components) => {
     return {
@@ -71,7 +74,7 @@ export const getFonts = (url) => {
     return dispatch => {
        fetch(url)
        .then(res => res.json())
-       .then(res => dispatch(typography(res.items)))
+       .then(res => dispatch(fontList(res.items)))
        .catch(err => {
         console.log("Error Reading data " + err);
       })
