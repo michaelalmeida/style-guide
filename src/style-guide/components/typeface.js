@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { Typography, Select, Divider, Icon } from 'antd';
+import { Typography, Select, Divider, Icon, message } from 'antd';
 
 import { getFonts } from '../guide';
 
@@ -23,13 +23,24 @@ class Typeface extends Component {
         this.props.getFonts('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyDZ1o9r_dT7z-65fz34Nc0AVRHONFKH6_w');
     };
 
+    handleFontListSelect = (value) => {
+        this.checkSelectLimit(value.length);
+    }
+
+    checkSelectLimit = (selected) => {
+        if(selected > 2) {
+            message.warning('The maximum recommended is two Font Family!');
+        } else if(selected === 2) {
+            message.success('Two Font Family is the recommended!');
+        }
+    }
+
     render() {
         return (
             <div>
                 <Title>Typeface</Title>
-                <i>*All fonts from Google Fonts are available here</i>
                 <Divider dashed />
-                <Title level={3}>Select all the Font family used in your project in order of priority</Title>
+                <p>Select all the Font family used in your project in order of priority.</p>
                 {this.props.fontList.length === 0 ? <Icon type="loading" style={{ fontSize: 24 }} spin /> :
                     <Select
                         mode="multiple"
@@ -37,13 +48,13 @@ class Typeface extends Component {
                         placeholder="Please select"
                         defaultValue={[]}
                         maxTagCount={5}
+                        onChange={this.handleFontListSelect}
                     >
                         {this.props.fontList.map(font =>
                             <Option key={font.family} value={font.family}>{font.family}</Option>
                         )}
                     </Select>
                 }
-                <b>The maximum recommended is two Font Family</b>
             </div>
         );
     }
