@@ -10,10 +10,7 @@ export const Types = {
 export const initialState = {
     colors: [],
     fontList: [], 
-    typography: {
-        primary: 'Arial, Helvetica, sans-serif',
-        secondary: 'sans-serif'
-    },
+    typography: [],
     components: {
         header: true,
         card: true,
@@ -35,6 +32,11 @@ export default function reducer(state = initialState, action) {
                 ...state,
                 fontList: action.fontList
             }
+        case Types.SET_TYPOGRAPHY:
+                return {
+                    ...state,
+                    typography: action.typography
+                }
         case Types.SET_COMPONENTS:
             return {
                 ...state,
@@ -61,6 +63,12 @@ export const fontList = (fontList) => {
     }
 };
 
+export const setTypography = (typography) => {
+    return {
+        type: Types.SET_TYPOGRAPHY,
+        typography
+    }
+}
 
 export const components = (components) => {
     return {

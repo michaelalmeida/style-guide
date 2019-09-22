@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {createStore, applyMiddleware} from 'redux';
+import {createStore, compose, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 
@@ -10,9 +10,11 @@ import reducers from './reducers.js';
 
 import GuideHome from './style-guide/index';
 
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 var store = createStore(
   reducers,
-  applyMiddleware(thunk)
+  composeEnhancer(applyMiddleware(thunk))
 );
 
 function App() {
