@@ -7,8 +7,6 @@ import { getFonts, setTypography } from '../guide';
 const { Title } = Typography;
 const { Option } = Select;
 
-
-
 class Typeface extends Component {
 
     constructor(props) {
@@ -68,7 +66,7 @@ class Typeface extends Component {
                                 mode="multiple"
                                 style={{ width: '100%' }}
                                 placeholder="Please select"
-                                defaultValue={[]}
+                                defaultValue={this.props.typography}
                                 maxTagCount={5}
                                 onChange={this.handleFontListSelect}
                             >

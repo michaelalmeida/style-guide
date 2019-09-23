@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom'
 
 import { Menu, Icon } from 'antd';
 const { SubMenu } = Menu;
@@ -20,7 +21,9 @@ const GuideMenu = () => {
                 </span>
                 }
             >
-                <Menu.Item key="1">Typeface</Menu.Item>
+                <Menu.Item key="1">
+                    <NavLink to="/typeface">Typeface</NavLink>
+                </Menu.Item>
             </SubMenu>
             <SubMenu
                 key="sub2"
@@ -31,7 +34,9 @@ const GuideMenu = () => {
                 </span>
                 }
             >
-                <Menu.Item key="2">Color palette</Menu.Item>
+                <Menu.Item key="2">
+                    <NavLink to="/palette">Color palette</NavLink>
+                </Menu.Item>
             </SubMenu>
             <SubMenu
                 key="sub3"
