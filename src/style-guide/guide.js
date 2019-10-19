@@ -8,7 +8,20 @@ export const Types = {
 
 // Reducer 
 export const initialState = {
-    colors: [],
+    colors: {
+        primary: {
+            r: '99',
+            g: '62',
+            b: '179',
+            a: '1',
+        }, 
+        secondary: {
+            r: '0',
+            g: '0',
+            b: '0',
+            a: '0'
+        }
+    },
     fontList: [], 
     typography: [],
     components: {

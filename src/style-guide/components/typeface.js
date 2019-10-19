@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { Typography, Select, Divider, Icon, Row, Col, Alert, Button } from 'antd';
+import { Typography, Select, Divider, Icon, Row, Col, Alert, Button, message } from 'antd';
 
 import { getFonts, setTypography } from '../guide';
 
@@ -51,13 +51,14 @@ class Typeface extends Component {
 
     saveTypography = () => {
         this.props.setTypography(this.state.typography);
+        message.success('You Font Family is saved!');
     }
 
     render() {
         return (
             <div>
                 <Title>Typeface</Title>
-                <Divider dashed />
+                <Divider />
                 <p>Select all the Font family used in your project in order of priority.</p>
                 <Row gutter={16}>
                     <Col span={18}>
