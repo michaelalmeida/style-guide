@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
 import { SketchPicker } from 'react-color';
+import PropTypes from 'prop-types'; 
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBrush } from '@fortawesome/free-solid-svg-icons';
@@ -23,6 +24,10 @@ class Palette extends Component {
                 }
             }
         }
+    }
+
+    componentDidMount() {
+        this.setState({teste: ' teste'})
     }
 
     handleChange = (color) => {
@@ -65,6 +70,10 @@ class Palette extends Component {
             </div>
         )
     }
+}
+
+Palette.propTypes = {
+    primaryColor: PropTypes.object
 }
 
 const mapStateToProps = state => {
