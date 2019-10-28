@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import PropTypes from 'prop-types'; 
+
 import { Typography, Select, Divider, Icon, Row, Col, Alert, Button, message } from 'antd';
 
 import { getFonts, setTypography } from '../guide';
@@ -86,6 +88,11 @@ class Typeface extends Component {
         );
     }
 };
+
+Typeface.propTypes = {
+    fontList: PropTypes.arrayOf(PropTypes.object),
+    typography: PropTypes.arrayOf(PropTypes.string)
+}
 
 const mapStateToProps = state => {
     return {
