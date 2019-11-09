@@ -10,11 +10,11 @@ import 'antd/dist/antd.css';
 
 import reducers from './reducers.js';
 
-import TypeFaceContainer from './style-guide/components/typeface';
-import PaletteContainer from './style-guide/components/palette';
+import TypeFaceContainer from './components/style-guide/typeface';
+import PaletteContainer from './components/style-guide/palette';
 
-import GuideMenu from './style-guide/menu';
-import GuideHeader from './style-guide/header';
+import GuideMenu from './components/pages/menu';
+import GuideHeader from './components/pages/header';
 
 const { Content, Sider } = Layout;
 

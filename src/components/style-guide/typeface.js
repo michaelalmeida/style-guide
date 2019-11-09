@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import { Typography, Select, Divider, Icon, Row, Col, Alert, Button, message } from 'antd';
 
-import { getFonts, setTypography } from '../guide';
+import { getFonts, setTypography } from '../../redux/guide';
 
 const { Title } = Typography;
 const { Option } = Select;
