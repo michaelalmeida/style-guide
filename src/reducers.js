@@ -1,4 +1,4 @@
-import guide from './style-guide/guide';
+import guide from './redux/guide';
 import { combineReducers } from 'redux';
 
 const reducers = combineReducers({

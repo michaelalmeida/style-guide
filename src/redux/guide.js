@@ -9,18 +9,10 @@ export const Types = {
 // Reducer 
 export const initialState = {
     colors: {
-        primary: {
-            r: '99',
-            g: '62',
-            b: '179',
-            a: '1',
-        }, 
-        secondary: {
-            r: '0',
-            g: '0',
-            b: '0',
-            a: '0'
-        }
+        first:  { hex: "#1A535C", rgba: { r: '26', g: '83', b: '92', a: '100'}},
+        second: { hex: "#4ECDC4", rgba: { r: '78', g: '205', b: '196', a: '100'}},
+        third:  { hex: "#F7FFF7", rgba: { r: '247', g: '255', b: '247', a: '100'}},
+        fourth: { hex: "#FF6B6B", rgba: { r: '255', g: '107', b: '107', a: '100'}}
     },
     fontList: [], 
     typography: [],
@@ -62,7 +54,7 @@ export default function reducer(state = initialState, action) {
 
 // Action Creators
 
-export const colors = (colors) => {
+export const setColors = (colors) => {
     return {
         type: Types.SET_COLORS,
         colors
