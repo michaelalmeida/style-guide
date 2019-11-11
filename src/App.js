@@ -12,6 +12,7 @@ import reducers from './reducers.js';
 
 import TypeFaceContainer from './components/style-guide/typeface';
 import PaletteContainer from './components/style-guide/palette';
+import ElementsContainer from './components/style-guide/elements';
 
 import GuideMenu from './components/pages/menu';
 import GuideHeader from './components/pages/header';
@@ -40,6 +41,7 @@ function App() {
                 <Route exact path="/" component={TypeFaceContainer} />
                 <Route path="/typeface" component={TypeFaceContainer} />
                 <Route path="/palette" component={PaletteContainer} />
+                <Route path="/elements" component={ElementsContainer} />
               </Switch>
             </Content>
           </Layout>

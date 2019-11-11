@@ -47,11 +47,16 @@ const GuideMenu = () => {
                 </span>
                 }
             >
-                <Menu.Item key="3">Layout</Menu.Item>
-                <Menu.Item key="4">Table</Menu.Item>
-                <Menu.Item key="5">Buttons</Menu.Item>
-                <Menu.Item key="63,">Mobile</Menu.Item>
+                <Menu.Item key="3">
+                    <NavLink to="/elements">Elements</NavLink>
+                </Menu.Item>
             </SubMenu>
+            <Menu.Item>
+                <span>
+                    <Icon type="layout" />
+                    Result
+                </span>
+            </Menu.Item>
         </Menu>
     )
 }

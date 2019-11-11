@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from "react-redux";
 import { SketchPicker } from 'react-color';
 import PropTypes from 'prop-types'; 
@@ -56,7 +56,7 @@ const Palette = (props) => {
 }
 
 Palette.propTypes = {
-    primaryColor: PropTypes.object
+    colors: PropTypes.object
 }
 
 const mapStateToProps = state => {
