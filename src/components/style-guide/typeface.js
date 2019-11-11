@@ -63,7 +63,7 @@ class Typeface extends Component {
                 <Divider />
                 <p>Select all the Font family used in your project in order of priority.</p>
                 <Row gutter={16}>
-                    <Col span={18}>
+                    <Col span={20}>
                         {this.props.fontList.length === 0 ? <Icon type="loading" style={{ fontSize: 24 }} spin /> :
                             <Select
                                 mode="multiple"

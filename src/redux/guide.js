@@ -16,13 +16,7 @@ export const initialState = {
     },
     fontList: [], 
     typography: [],
-    components: {
-        header: true,
-        card: true,
-        buttons: true,
-        website: true,
-        mobile: true
-    }
+    elements: ["Button", "Form"]
 };
 
 export default function reducer(state = initialState, action) {
@@ -45,7 +39,7 @@ export default function reducer(state = initialState, action) {
         case Types.SET_COMPONENTS:
             return {
                 ...state,
-                components: action.components
+                elements: action.elements
             }
         default:
             return state;
@@ -75,10 +69,10 @@ export const setTypography = (typography) => {
     }
 }
 
-export const components = (components) => {
+export const setComponents = (elements) => {
     return {
         type: Types.SET_COMPONENTS,
-        components
+        elements
     }
 };
 
