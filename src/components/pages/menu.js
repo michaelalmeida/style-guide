@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 import { Menu, Icon } from 'antd';
 const { SubMenu } = Menu;
 
-const GuideMenu = () => {
+const GuideMenu = (props) => {
     return (
         <Menu
             mode="inline"
@@ -53,8 +53,8 @@ const GuideMenu = () => {
             </SubMenu>
             <Menu.Item>
                 <span>
-                    <Icon type="layout" />
-                    Result
+                    <Icon type="block" />
+                    <NavLink to="/result/">Result</NavLink>
                 </span>
             </Menu.Item>
         </Menu>

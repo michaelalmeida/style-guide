@@ -8,11 +8,12 @@ import { Route, Switch } from "react-router-dom";
 import { Layout } from 'antd';
 import 'antd/dist/antd.css';
 
-import reducers from './reducers.js';
+import reducers from './redux/reducers';
 
 import TypeFaceContainer from './components/style-guide/typeface';
 import PaletteContainer from './components/style-guide/palette';
 import ElementsContainer from './components/style-guide/elements';
+import ResultContainer from './components/style-guide/result';
 
 import GuideMenu from './components/pages/menu';
 import GuideHeader from './components/pages/header';
@@ -42,6 +43,7 @@ function App() {
                 <Route path="/typeface" component={TypeFaceContainer} />
                 <Route path="/palette" component={PaletteContainer} />
                 <Route path="/elements" component={ElementsContainer} />
+                <Route path="/result/" component={ResultContainer} />
               </Switch>
             </Content>
           </Layout>

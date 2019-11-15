@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { connect } from "react-redux";
 
 import PropTypes from 'prop-types'; 
@@ -8,8 +8,6 @@ import { setComponents } from '../../redux/guide';
 import { Typography, Divider, Row, Col, Checkbox  } from 'antd';
 
 const { Title } = Typography;
-
-
 
 const Elements = (props) => {
     const handlerCheck = (checkedValues) => {
