@@ -15,7 +15,7 @@ export const initialState = {
         fourth: { hex: "#FF6B6B", rgba: { r: '255', g: '107', b: '107', a: '100'}}
     },
     fontList: [], 
-    typography: ["Playfair Display"],
+    typography: [],
     elements: ["Button", "Form"]
 };
 

@@ -37,7 +37,7 @@ class Typeface extends Component {
         if (selected > 2) {
             this.errorMessage(true);
             this.blockSubmit(true);
-        } else if (selected === 2) {
+        } else if (selected === 1 || selected === 2) {
             this.errorMessage(false);
             this.blockSubmit(false);
         }

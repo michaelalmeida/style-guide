@@ -33,9 +33,6 @@ const Elements = (props) => {
                     </Row>
                     <Row gutter={16} style={{marginTop: '20px'}}>
                         <Col span={8}>
-                            <Checkbox value="Table">Table</Checkbox>
-                        </Col>
-                        <Col span={8}>
                             <Checkbox value="Tabs">Tabs</Checkbox>
                         </Col>
                         <Col span={8}>

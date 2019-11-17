@@ -51,11 +51,13 @@ const GuideMenu = (props) => {
                     <NavLink to="/elements">Elements</NavLink>
                 </Menu.Item>
             </SubMenu>
-            <Menu.Item>
+            <Menu.Item key="4">
+                <NavLink to="/result/">
                 <span>
                     <Icon type="block" />
-                    <NavLink to="/result/">Result</NavLink>
+                    Result
                 </span>
+                </NavLink>
             </Menu.Item>
         </Menu>
     )
