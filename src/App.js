@@ -8,11 +8,12 @@ import { Route, Switch } from "react-router-dom";
 import { Layout } from 'antd';
 import 'antd/dist/antd.css';
 
-import reducers from './reducers.js';
+import reducers from './redux/reducers';
 
-import TypeFaceContainer from './components/style-guide/typeface';
-import PaletteContainer from './components/style-guide/palette';
-import ElementsContainer from './components/style-guide/elements';
+import TypeFaceContainer from './components/style-guide/Typeface';
+import PaletteContainer from './components/style-guide/Palette';
+import ElementsContainer from './components/style-guide/Elements';
+import ResultContainer from './components/style-guide/Result/Result';
 
 import GuideMenu from './components/pages/menu';
 import GuideHeader from './components/pages/header';
@@ -30,7 +31,7 @@ function App() {
   return (
     <Provider store={store}>
       <Layout style={{ background: '#ffffff' }}>
-        <Content style={{ padding: '0 50px', margin: '60px 0 0 0' }}>
+        <Content style={{ padding: '0 50px', margin: '60px auto', width: '1024px' }}>
           <GuideHeader />
           <Layout style={{ padding: '24px 0', background: '#fff', border: '1px solid rgb(235, 237, 240)' }}>
             <Sider width={200} style={{ background: '#fff' }}>
@@ -42,6 +43,7 @@ function App() {
                 <Route path="/typeface" component={TypeFaceContainer} />
                 <Route path="/palette" component={PaletteContainer} />
                 <Route path="/elements" component={ElementsContainer} />
+                <Route path="/result/" component={ResultContainer} />
               </Switch>
             </Content>
           </Layout>

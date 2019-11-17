@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { connect } from "react-redux";
 
 import PropTypes from 'prop-types'; 
@@ -8,8 +8,6 @@ import { setComponents } from '../../redux/guide';
 import { Typography, Divider, Row, Col, Checkbox  } from 'antd';
 
 const { Title } = Typography;
-
-
 
 const Elements = (props) => {
     const handlerCheck = (checkedValues) => {
@@ -34,9 +32,6 @@ const Elements = (props) => {
                         </Col>
                     </Row>
                     <Row gutter={16} style={{marginTop: '20px'}}>
-                        <Col span={8}>
-                            <Checkbox value="Table">Table</Checkbox>
-                        </Col>
                         <Col span={8}>
                             <Checkbox value="Tabs">Tabs</Checkbox>
                         </Col>
