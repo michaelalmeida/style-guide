@@ -1,12 +1,12 @@
 import styled, {createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
-    body {
-        @import url('https://fonts.googleapis.com/css?family=${props => props.primaryFont || "Roboto"}|${props => props.secondaryFont || "Playfair Display"}');
-    }
+    @import url('https://fonts.googleapis.com/css?family=${props => props.primaryFont || "Roboto"}|${props => props.secondaryFont || "Playfair Display"}');
+    
     .primary-font {
         font-family: "${props => props.primaryFont || "Roboto"}";
     }
+
     .secondary-font {
         font-family: "${props => props.secondaryFont || "Playfair Display"}";
     }
