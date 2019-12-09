@@ -8,7 +8,7 @@ import TypeFaceContainer from './components/typeface';
 const { Content, Sider } = Layout;
 
 const GuideHome = () => {
-  return (<TypeFaceContainer />)
+  return <TypeFaceContainer />;
 };
 
 export default GuideHome;
