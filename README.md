@@ -2,7 +2,7 @@
 
 The Style-guide is a tool to make combinations about typography, colors, components.
 
-`https://styleguide.michael.eti.br/`
+https://styleguide.michael.eti.br/
 
 ## Stack:
 
