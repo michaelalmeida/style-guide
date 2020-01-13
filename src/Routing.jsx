@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Route, Switch } from 'react-router-dom';
 
-import TypeFaceContainer from './components/style-guide/Typeface';
+import TypeFaceContainer from './components/style-guide/Typeface/Typeface';
 import PaletteContainer from './components/style-guide/Palette';
 import ElementsContainer from './components/style-guide/Elements';
 import ResultContainer from './components/style-guide/Result/Result';
