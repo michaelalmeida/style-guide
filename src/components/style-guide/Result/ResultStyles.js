@@ -67,7 +67,9 @@ export const GlobalStyles = createGlobalStyle`
 
 export const ResultTitle = styled.div`
   width: 100%;
-  background: ${props => props.primaryColor || '#1A535C'} input {
+  background: ${props => props.primaryColor || '#1A535C'};
+
+  input {
     padding: 60px;
     width: 100%;
     font-size: 36px;

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+import CONSTANTS from '../../../constants';
+
 import {
   Typography,
   Select,
@@ -32,9 +34,7 @@ class Typeface extends Component {
   }
 
   componentDidMount() {
-    this.props.getFonts(
-      'https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyDZ1o9r_dT7z-65fz34Nc0AVRHONFKH6_w'
-    );
+    this.props.getFonts(CONSTANTS.API_REQUESTS.FONTS);
   }
 
   handleFontListSelect = value => {

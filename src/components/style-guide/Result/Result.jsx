@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+
+import { saveGuide, setName } from '../../../redux/guide';
+import CONSTANTS from '../../../constants';
 
 import {
   GlobalStyles,
@@ -15,30 +18,32 @@ import { Typography, Row, Col, Empty } from 'antd';
 const { Title } = Typography;
 
 const Result = props => {
-  const [guideName, setGuideName] = useState('Click to give me a name');
+  const { id, name, colors, typography, elements } = props;
+  const { match, params } = props;
 
   const nameHandler = e => {
-    setGuideName(e.target.value);
+    props.setName(e.target.value);
   };
 
   return (
     <>
       <GlobalStyles
-        primaryColor={props.colors['first'].hex}
-        secondaryColor={props.colors['second'].hex}
-        primaryFont={props.typography[0]}
-        secondaryFont={props.typography[1]}
+        primaryColor={colors['first'].hex}
+        secondaryColor={colors['second'].hex}
+        primaryFont={typography[0]}
+        secondaryFont={typography[1]}
       />
-      <ResultTitle primaryColor={props.colors['first'].hex}>
+      <ResultTitle primaryColor={colors['first'].hex}>
         <input
-          value={guideName}
+          value={name}
           className="primary-font"
           onChange={nameHandler}
+          placeholder={CONSTANTS.WARNINGS.RESULT.INPUT_NAME}
         />
       </ResultTitle>
       <Title style={{ marginTop: '50px' }}>Typography</Title>
-      {props.typography.length > 0 ? (
-        props.typography.map((font, index) => {
+      {typography.length > 0 ? (
+        typography.map((font, index) => {
           return (
             <div
               className={index === 0 ? 'primary-font' : 'secondary-font'}
@@ -65,7 +70,7 @@ const Result = props => {
       )}
       <Title style={{ marginTop: '50px' }}>Colors</Title>
       <Row gutter={16} style={{ marginTop: '50px' }}>
-        {Object.entries(props.colors).map(color => {
+        {Object.entries(colors).map(color => {
           return (
             <Col span={6} key={color[0]}>
               <ColorCard background={color[1].hex}></ColorCard>
@@ -78,22 +83,24 @@ const Result = props => {
           );
         })}
       </Row>
-      {props.elements.length > 0 && (
+      {elements.length > 0 && (
         <Title style={{ marginTop: '50px' }}>Elements</Title>
       )}
-      {props.elements.map(element => {
+      {elements.map(element => {
         return (
           <Row gutter={16} key={element} style={{ marginBottom: '25px' }}>
             <ElementSelected element={element} />
           </Row>
         );
       })}
-      <ResultBottom />
+      <ResultBottom id={id} save={props.saveGuide} payload={props} />
     </>
   );
 };
 
 Result.propTypes = {
+  id: PropTypes.string,
+  name: PropTypes.string,
   colors: PropTypes.object,
   fontList: PropTypes.arrayOf(PropTypes.object),
   typography: PropTypes.arrayOf(PropTypes.string),
@@ -101,12 +108,25 @@ Result.propTypes = {
 
 const mapStateToProps = state => {
   return {
+    id: state.guide.id,
+    name: state.guide.name,
     colors: state.guide.colors,
     typography: state.guide.typography,
     elements: state.guide.elements,
   };
 };
 
-const ResultContainer = connect(mapStateToProps, null)(Result);
+const mapDispathToProps = dispatch => {
+  return {
+    saveGuide: payload => {
+      dispatch(saveGuide(payload));
+    },
+    setName: name => {
+      dispatch(setName(name));
+    },
+  };
+};
+
+const ResultContainer = connect(mapStateToProps, mapDispathToProps)(Result);
 
 export default ResultContainer;

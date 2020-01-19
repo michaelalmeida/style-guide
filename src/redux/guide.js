@@ -1,13 +1,13 @@
+import CONSTANTS from '../constants';
 // Action Types
-export const Types = {
-  SET_COLORS: 'SET_COLORS',
-  SET_TYPOGRAPHY: 'SET_TYPOGRAPHY',
-  SET_COMPONENTS: 'SET_COMPONENTS',
-  GET_FONTLIST: 'GET_FONTLIST',
-};
+import Types from './constants';
+
+const { API_REQUESTS } = CONSTANTS;
 
 // Reducer
 export const initialState = {
+  id: '',
+  name: '',
   colors: {
     first: { hex: '#1A535C', rgba: { r: '26', g: '83', b: '92', a: '100' } },
     second: { hex: '#4ECDC4', rgba: { r: '78', g: '205', b: '196', a: '100' } },
@@ -44,6 +44,17 @@ export default function reducer(state = initialState, action) {
         ...state,
         elements: action.elements,
       };
+    case Types.SET_NAME: {
+      return {
+        ...state,
+        name: action.name,
+      };
+    }
+    case Types.GET_ID:
+      return {
+        ...state,
+        id: action.id,
+      };
     default:
       return state;
   }
@@ -79,6 +90,20 @@ export const setComponents = elements => {
   };
 };
 
+export const getId = id => {
+  return {
+    type: Types.GET_ID,
+    id,
+  };
+};
+
+export const setName = name => {
+  return {
+    type: Types.SET_NAME,
+    name,
+  };
+};
+
 // Middleware
 export const getFonts = url => {
   return dispatch => {
@@ -88,5 +113,16 @@ export const getFonts = url => {
       .catch(err => {
         console.log('Error Reading data ' + err);
       });
+  };
+};
+
+export const saveGuide = payload => {
+  return dispatch => {
+    fetch(API_REQUESTS.STYLE_GUIDE.SAVE, {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    })
+      .then(res => res.json())
+      .then(res => dispatch(getId(res)));
   };
 };
