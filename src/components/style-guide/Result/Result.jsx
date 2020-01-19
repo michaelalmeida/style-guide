@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import ResultBottom from './ResultBottom';
 
 import {
   GlobalStyles,
@@ -10,6 +9,7 @@ import {
   ColorCard,
 } from './ResultStyles';
 import { ElementSelected } from './ElementSelected';
+import ResultBottom from './ResultBottom';
 
 import { Typography, Row, Col, Empty } from 'antd';
 const { Title } = Typography;
@@ -78,10 +78,8 @@ const Result = props => {
           );
         })}
       </Row>
-      {props.elements.length > 0 ? (
+      {props.elements.length > 0 && (
         <Title style={{ marginTop: '50px' }}>Elements</Title>
-      ) : (
-        ''
       )}
       {props.elements.map(element => {
         return (

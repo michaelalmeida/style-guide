@@ -1,0 +1,9 @@
+/*override color picker component*/
+.sketch-picker {
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0 !important;
+}
+
+.ant-layout.ant-layout-has-sider > .ant-layout,
+.ant-layout.ant-layout-has-sider > .ant-layout-content {
+  overflow-x: visible;
+}
