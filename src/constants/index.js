@@ -5,8 +5,8 @@ const API_REQUESTS = Object.freeze({
   FONTS:
     'https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyDZ1o9r_dT7z-65fz34Nc0AVRHONFKH6_w',
   STYLE_GUIDE: {
-    SAVE: '/guide/save/',
-    READONLY: '/guide/',
+    SAVE: 'guide/save/',
+    READONLY: 'guide/',
   },
 });
 
