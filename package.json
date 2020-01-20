@@ -43,5 +43,5 @@
     "enzyme-adapter-react-16": "^1.15.1",
     "jest-enzyme": "^7.1.2"
   },
-  "proxy": "https://style-guide-backend.herokuapp.com/"
+  "proxy": "https://style-guide-backend.herokuapp.com"
 }

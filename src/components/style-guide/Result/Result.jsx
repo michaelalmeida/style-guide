@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -19,13 +19,13 @@ const { Title } = Typography;
 
 const Result = props => {
   const { match } = props;
-  const [loading, isLoading] = useState(false);
+  const { getGuideFromDB } = props;
 
   useEffect(() => {
     if (typeof match.params.id !== 'undefined') {
-      props.getGuideFromDB(match.params.id);
+      getGuideFromDB(match.params.id);
     }
-  }, [match.params.id]);
+  }, [match.params.id, getGuideFromDB]);
 
   const { id, name, colors, typography, elements } = props;
 
