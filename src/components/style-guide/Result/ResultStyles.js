@@ -77,6 +77,11 @@ export const ResultTitle = styled.div`
     border: 0;
     background: none;
     outline: none;
+
+    &::placeholder {
+      color: white;
+      opacity: 0.5;
+    }
   }
 `;
 

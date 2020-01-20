@@ -55,6 +55,15 @@ export default function reducer(state = initialState, action) {
         ...state,
         id: action.id,
       };
+    case Types.UPDATE_STATE:
+      const { name, colors, typography, elements } = action.payload;
+      return {
+        ...state,
+        name,
+        colors,
+        typography,
+        elements,
+      };
     default:
       return state;
   }
@@ -90,10 +99,11 @@ export const setComponents = elements => {
   };
 };
 
-export const getId = id => {
+export const setId = id => {
   return {
     type: Types.GET_ID,
     id,
+    isLoading: false,
   };
 };
 
@@ -101,6 +111,13 @@ export const setName = name => {
   return {
     type: Types.SET_NAME,
     name,
+  };
+};
+
+export const updateState = payload => {
+  return {
+    type: Types.UPDATE_STATE,
+    payload,
   };
 };
 
@@ -120,9 +137,25 @@ export const saveGuide = payload => {
   return dispatch => {
     fetch(API_REQUESTS.STYLE_GUIDE.SAVE, {
       method: 'POST',
+      mode: 'cors',
       body: JSON.stringify(payload),
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
     })
       .then(res => res.json())
-      .then(res => dispatch(getId(res)));
+      .then(res => dispatch(setId(res)));
+  };
+};
+
+export const getGuideFromDB = id => {
+  return dispatch => {
+    fetch(API_REQUESTS.STYLE_GUIDE.READONLY + id)
+      .then(res => res.json())
+      .then(res => dispatch(updateState(res)))
+      .catch(err => {
+        console.log('Error Reading data ' + err);
+      });
   };
 };

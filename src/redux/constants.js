@@ -5,6 +5,7 @@ const Types = Object.freeze({
   SET_COMPONENTS: 'SET_COMPONENTS',
   GET_FONTLIST: 'GET_FONTLIST',
   GET_ID: 'GET_ID',
+  UPDATE_STATE: 'UPDATE_STATE',
 });
 
 export default Types;

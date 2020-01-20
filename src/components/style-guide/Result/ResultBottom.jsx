@@ -5,21 +5,22 @@ import CONSTANTS from '../../../constants';
 import { Divider, Button } from 'antd';
 
 const ResultBottom = props => {
-  console.log(props);
-  const { name, colors, typography, elements } = props;
+  const { name, colors, typography, elements } = props.payload;
   const payload = {
     name,
     colors,
     typography,
     elements,
   };
+
   return (
     <BottomBar>
       <Divider />
       {props.id.length !== 0 && (
-        <Button type="link">
-          `{CONSTANTS.RESULT_URL}/{props.id}`
-        </Button>
+        <span>
+          {CONSTANTS.RESULT_URL}
+          {props.id}
+        </span>
       )}
       <Button onClick={() => props.save(payload)}>Save</Button>
     </BottomBar>

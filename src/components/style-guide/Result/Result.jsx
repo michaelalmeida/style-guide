@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { saveGuide, setName } from '../../../redux/guide';
+import { saveGuide, setName, getGuideFromDB } from '../../../redux/guide';
 import CONSTANTS from '../../../constants';
 
 import {
@@ -18,8 +18,16 @@ import { Typography, Row, Col, Empty } from 'antd';
 const { Title } = Typography;
 
 const Result = props => {
+  const { match } = props;
+  const [loading, isLoading] = useState(false);
+
+  useEffect(() => {
+    if (typeof match.params.id !== 'undefined') {
+      props.getGuideFromDB(match.params.id);
+    }
+  }, [match.params.id]);
+
   const { id, name, colors, typography, elements } = props;
-  const { match, params } = props;
 
   const nameHandler = e => {
     props.setName(e.target.value);
@@ -123,6 +131,9 @@ const mapDispathToProps = dispatch => {
     },
     setName: name => {
       dispatch(setName(name));
+    },
+    getGuideFromDB: id => {
+      dispatch(getGuideFromDB(id));
     },
   };
 };
