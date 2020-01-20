@@ -14,7 +14,7 @@ export default function Routing() {
       <Route path="/typeface" component={TypeFaceContainer} />
       <Route path="/palette" component={PaletteContainer} />
       <Route path="/elements" component={ElementsContainer} />
-      <Route path="/result/" component={ResultContainer} />
+      <Route path={['/result/:id', '/result/']} component={ResultContainer} />
     </Switch>
   );
 }
