@@ -10,21 +10,10 @@ const API_REQUESTS = Object.freeze({
   },
 });
 
-const WARNINGS = Object.freeze({
-  TYPEFACE: {
-    MAX_FONT: 'The maximum accepted is two Font Family.',
-    SUCESS: 'You Font Family is saved!',
-  },
-  RESULT: {
-    INPUT_NAME: 'Type a name for your Guide',
-  },
-});
-
 const CONSTANTS = {
   BASE_URL,
   RESULT_URL,
   API_REQUESTS,
-  WARNINGS,
 };
 
 export default CONSTANTS;
