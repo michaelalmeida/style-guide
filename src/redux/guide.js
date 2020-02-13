@@ -20,6 +20,7 @@ export const initialState = {
   fontList: [],
   typography: [],
   elements: ['Button', 'Form'],
+  isSaving: false,
 };
 
 export default function reducer(state = initialState, action) {
@@ -64,6 +65,11 @@ export default function reducer(state = initialState, action) {
         typography,
         elements,
       };
+    case Types.IS_SAVING:
+      return {
+        ...state,
+        isSaving: action.saving,
+      };
     default:
       return state;
   }
@@ -103,7 +109,6 @@ export const setId = id => {
   return {
     type: Types.GET_ID,
     id,
-    isLoading: false,
   };
 };
 
@@ -121,6 +126,13 @@ export const updateState = payload => {
   };
 };
 
+export const isSaving = saving => {
+  return {
+    type: Types.IS_SAVING,
+    saving,
+  };
+};
+
 // Middleware
 export const getFonts = url => {
   return dispatch => {
@@ -135,6 +147,8 @@ export const getFonts = url => {
 
 export const saveGuide = payload => {
   return dispatch => {
+    dispatch(isSaving(true));
+
     fetch(API_REQUESTS.STYLE_GUIDE.SAVE, {
       method: 'POST',
       mode: 'cors',
@@ -145,7 +159,10 @@ export const saveGuide = payload => {
       },
     })
       .then(res => res.json())
-      .then(res => dispatch(setId(res)));
+      .then(res => {
+        dispatch(setId(res));
+        dispatch(isSaving(false));
+      });
   };
 };
 

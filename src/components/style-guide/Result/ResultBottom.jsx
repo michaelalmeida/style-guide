@@ -5,7 +5,7 @@ import CONSTANTS from '../../../constants';
 import { Divider, Button } from 'antd';
 
 const ResultBottom = props => {
-  const { name, colors, typography, elements } = props.payload;
+  const { name, colors, typography, elements, isSaving } = props.payload;
   const payload = {
     name,
     colors,
@@ -22,7 +22,9 @@ const ResultBottom = props => {
           {props.id}
         </span>
       )}
-      <Button onClick={() => props.save(payload)}>Save</Button>
+      <Button onClick={() => props.save(payload)} loading={isSaving}>
+        Save
+      </Button>
     </BottomBar>
   );
 };

@@ -6,6 +6,7 @@ const Types = Object.freeze({
   GET_FONTLIST: 'GET_FONTLIST',
   GET_ID: 'GET_ID',
   UPDATE_STATE: 'UPDATE_STATE',
+  IS_SAVING: 'IS_SAVING',
 });
 
 export default Types;

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { saveGuide, setName, getGuideFromDB } from '../../../redux/guide';
-import CONSTANTS from '../../../constants';
+import { WARNINGS, SECTIONS } from './resultConstants';
 
 import {
   GlobalStyles,
@@ -20,6 +20,8 @@ const { Title } = Typography;
 const Result = props => {
   const { match } = props;
   const { getGuideFromDB } = props;
+
+  const { TYPOGRAPHY, COLORS, ELEMENTS } = SECTIONS;
 
   useEffect(() => {
     if (typeof match.params.id !== 'undefined') {
@@ -46,10 +48,10 @@ const Result = props => {
           value={name}
           className="primary-font"
           onChange={nameHandler}
-          placeholder={CONSTANTS.WARNINGS.RESULT.INPUT_NAME}
+          placeholder={WARNINGS.INPUT_NAME}
         />
       </ResultTitle>
-      <Title style={{ marginTop: '50px' }}>Typography</Title>
+      <Title style={{ marginTop: '50px' }}>{TYPOGRAPHY}</Title>
       {typography.length > 0 ? (
         typography.map((font, index) => {
           return (
@@ -74,9 +76,9 @@ const Result = props => {
           );
         })
       ) : (
-        <Empty description="You haven't selected any font yet" />
+        <Empty description={WARNINGS.NO_FONT} />
       )}
-      <Title style={{ marginTop: '50px' }}>Colors</Title>
+      <Title style={{ marginTop: '50px' }}>{COLORS}</Title>
       <Row gutter={16} style={{ marginTop: '50px' }}>
         {Object.entries(colors).map(color => {
           return (
@@ -92,7 +94,7 @@ const Result = props => {
         })}
       </Row>
       {elements.length > 0 && (
-        <Title style={{ marginTop: '50px' }}>Elements</Title>
+        <Title style={{ marginTop: '50px' }}>{ELEMENTS}</Title>
       )}
       {elements.map(element => {
         return (
@@ -112,6 +114,7 @@ Result.propTypes = {
   colors: PropTypes.object,
   fontList: PropTypes.arrayOf(PropTypes.object),
   typography: PropTypes.arrayOf(PropTypes.string),
+  isSaving: PropTypes.bool,
 };
 
 const mapStateToProps = state => {
@@ -121,6 +124,7 @@ const mapStateToProps = state => {
     colors: state.guide.colors,
     typography: state.guide.typography,
     elements: state.guide.elements,
+    isSaving: state.guide.isSaving,
   };
 };
 
