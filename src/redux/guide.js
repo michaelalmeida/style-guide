@@ -1,8 +1,6 @@
-import CONSTANTS from '../constants';
+import { API_REQUESTS } from '../constants';
 // Action Types
 import Types from './constants';
-
-const { API_REQUESTS } = CONSTANTS;
 
 // Reducer
 export const initialState = {

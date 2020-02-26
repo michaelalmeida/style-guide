@@ -1,6 +1,6 @@
 import React from 'react';
 import { BottomBar } from './ResultStyles';
-import CONSTANTS from '../../../constants';
+import { RESULT_URL } from '../../../constants';
 
 import { Divider, Button } from 'antd';
 
@@ -18,7 +18,7 @@ const ResultBottom = props => {
       <Divider />
       {props.id.length !== 0 && (
         <span>
-          {CONSTANTS.RESULT_URL}
+          {RESULT_URL}
           {props.id}
         </span>
       )}
