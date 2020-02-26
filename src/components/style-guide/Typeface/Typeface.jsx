@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import CONSTANTS from '../../../constants';
+import { API_REQUESTS } from '../../../constants';
+import { WARNINGS, BUTTONS } from './typeFaceConstants';
 
 import {
   Typography,
@@ -34,7 +35,7 @@ class Typeface extends Component {
   }
 
   componentDidMount() {
-    this.props.getFonts(CONSTANTS.API_REQUESTS.FONTS);
+    this.props.getFonts(API_REQUESTS.FONTS);
   }
 
   handleFontListSelect = value => {
@@ -64,7 +65,7 @@ class Typeface extends Component {
 
   saveTypography = () => {
     this.props.setTypography(this.state.typography);
-    message.success('You Font Family is saved!');
+    message.success(WARNINGS.SUCESS);
   };
 
   render() {
@@ -72,9 +73,7 @@ class Typeface extends Component {
       <div>
         <Title>Typeface</Title>
         <Divider />
-        <p>
-          Select all the Font family used in your project in order of priority.
-        </p>
+        <p>{WARNINGS.RULE}</p>
         <Row gutter={16}>
           <Col span={20}>
             {this.props.fontList.length === 0 ? (
@@ -102,14 +101,14 @@ class Typeface extends Component {
               type="primary"
               disabled={this.state.blockSubmit ? true : false}
             >
-              Salvar
+              {BUTTONS.SAVE}
             </Button>
           </Col>
         </Row>
         {this.state.showErrorMessage ? (
           <Alert
             style={{ marginTop: '20px' }}
-            message="The maximum accepted is two Font Family."
+            message={WARNINGS.ERROR_MAX_FONTS}
             type="error"
             showIcon
           />
