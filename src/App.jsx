@@ -1,23 +1,16 @@
 import React from 'react';
-
-import { createStore, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
+
+import { store } from './store';
 
 import { Layout } from 'antd';
 import 'antd/dist/antd.css';
-
-import reducers from './redux/reducers';
 
 import Routing from './Routing';
 import GuideMenu from './components/pages/menu';
 import GuideHeader from './components/pages/header';
 
 const { Content, Sider } = Layout;
-
-const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-var store = createStore(reducers, composeEnhancer(applyMiddleware(thunk)));
 
 function App() {
   return (

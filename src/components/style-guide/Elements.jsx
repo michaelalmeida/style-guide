@@ -2,14 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import PropTypes from 'prop-types';
-import { setComponents } from '../../redux/guide';
+import { setComponents } from '../../store/guideReducer';
 
 import { Typography, Divider, Row, Col, Checkbox } from 'antd';
 
 const { Title } = Typography;
 
-const Elements = props => {
-  const handlerCheck = checkedValues => {
+const Elements = (props) => {
+  const handlerCheck = (checkedValues) => {
     props.setComponents(checkedValues);
   };
 
@@ -51,15 +51,15 @@ Elements.propTypes = {
   elements: PropTypes.arrayOf(PropTypes.string),
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     elements: state.guide.elements,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    setComponents: elements => {
+    setComponents: (elements) => {
       dispatch(setComponents(elements));
     },
   };

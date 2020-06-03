@@ -17,7 +17,7 @@ import {
   message,
 } from 'antd';
 
-import { getFonts, setTypography } from '../../../redux/guide';
+import { getFonts, setTypography } from '../../../store/guideReducer';
 
 const { Title } = Typography;
 const { Option } = Select;
@@ -38,14 +38,14 @@ class Typeface extends Component {
     this.props.getFonts(API_REQUESTS.FONTS);
   }
 
-  handleFontListSelect = value => {
+  handleFontListSelect = (value) => {
     this.checkSelectLimit(value.length);
     this.setState({
       typography: value,
     });
   };
 
-  checkSelectLimit = selected => {
+  checkSelectLimit = (selected) => {
     if (selected > 2) {
       this.errorMessage(true);
       this.blockSubmit(true);
@@ -55,11 +55,11 @@ class Typeface extends Component {
     }
   };
 
-  errorMessage = validation => {
+  errorMessage = (validation) => {
     this.setState({ showErrorMessage: validation });
   };
 
-  blockSubmit = validation => {
+  blockSubmit = (validation) => {
     this.setState({ blockSubmit: validation });
   };
 
@@ -87,7 +87,7 @@ class Typeface extends Component {
                 maxTagCount={5}
                 onChange={this.handleFontListSelect}
               >
-                {this.props.fontList.map(font => (
+                {this.props.fontList.map((font) => (
                   <Option key={font.family} value={font.family}>
                     {font.family}
                   </Option>
@@ -125,19 +125,19 @@ Typeface.propTypes = {
   typography: PropTypes.arrayOf(PropTypes.string),
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     fontList: state.guide.fontList,
     typography: state.guide.typography,
   };
 };
 
-const mapDispathToProps = dispatch => {
+const mapDispathToProps = (dispatch) => {
   return {
-    getFonts: url => {
+    getFonts: (url) => {
       dispatch(getFonts(url));
     },
-    setTypography: typography => {
+    setTypography: (typography) => {
       dispatch(setTypography(typography));
     },
   };

@@ -2,7 +2,11 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { saveGuide, setName, getGuideFromDB } from '../../../redux/guide';
+import {
+  saveGuide,
+  setName,
+  getGuideFromDB,
+} from '../../../store/guideReducer';
 import { WARNINGS, SECTIONS } from './resultConstants';
 
 import {
@@ -17,7 +21,7 @@ import ResultBottom from './ResultBottom';
 import { Typography, Row, Col, Empty } from 'antd';
 const { Title } = Typography;
 
-const Result = props => {
+const Result = (props) => {
   const { match } = props;
   const { getGuideFromDB } = props;
 
@@ -31,7 +35,7 @@ const Result = props => {
 
   const { id, name, colors, typography, elements } = props;
 
-  const nameHandler = e => {
+  const nameHandler = (e) => {
     props.setName(e.target.value);
   };
 
@@ -80,7 +84,7 @@ const Result = props => {
       )}
       <Title style={{ marginTop: '50px' }}>{COLORS}</Title>
       <Row gutter={16} style={{ marginTop: '50px' }}>
-        {Object.entries(colors).map(color => {
+        {Object.entries(colors).map((color) => {
           return (
             <Col span={6} key={color[0]}>
               <ColorCard background={color[1].hex}></ColorCard>
@@ -96,7 +100,7 @@ const Result = props => {
       {elements.length > 0 && (
         <Title style={{ marginTop: '50px' }}>{ELEMENTS}</Title>
       )}
-      {elements.map(element => {
+      {elements.map((element) => {
         return (
           <Row gutter={16} key={element} style={{ marginBottom: '25px' }}>
             <ElementSelected element={element} />
@@ -117,7 +121,7 @@ Result.propTypes = {
   isSaving: PropTypes.bool,
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     id: state.guide.id,
     name: state.guide.name,
@@ -128,15 +132,15 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispathToProps = dispatch => {
+const mapDispathToProps = (dispatch) => {
   return {
-    saveGuide: payload => {
+    saveGuide: (payload) => {
       dispatch(saveGuide(payload));
     },
-    setName: name => {
+    setName: (name) => {
       dispatch(setName(name));
     },
-    getGuideFromDB: id => {
+    getGuideFromDB: (id) => {
       dispatch(getGuideFromDB(id));
     },
   };

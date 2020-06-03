@@ -4,14 +4,14 @@ import { SketchPicker } from 'react-color';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { setColors } from '../../redux/guide';
+import { setColors } from '../../store/guideReducer';
 
 import { Typography, Divider, Popover } from 'antd';
 const { Title } = Typography;
 
 const ColorCard = styled.div`
-  height: ${props => props.height || '50px'};
-  background: ${props => props.color || '#eeeeee'};
+  height: ${(props) => props.height || '50px'};
+  background: ${(props) => props.color || '#eeeeee'};
 `;
 
 const ColorDisplay = styled.p`
@@ -23,7 +23,7 @@ const ColorDisplay = styled.p`
   text-align: right;
 `;
 
-const ColorComponent = props => {
+const ColorComponent = (props) => {
   const index = props.index;
   const height = props.height;
   const setColors = props.setColors;
@@ -35,7 +35,7 @@ const ColorComponent = props => {
         content={
           <SketchPicker
             color={props.colors[index].rgba}
-            onChange={color => {
+            onChange={(color) => {
               handlerColor(color, props.colors, index, setColors);
             }}
           />
@@ -57,7 +57,7 @@ const handlerColor = (colorSelected, colors, index, setColors) => {
   });
 };
 
-const Palette = props => {
+const Palette = (props) => {
   return (
     <div>
       <Title>Color Palette</Title>
@@ -93,15 +93,15 @@ Palette.propTypes = {
   colors: PropTypes.object,
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     colors: state.guide.colors,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    setColors: colors => {
+    setColors: (colors) => {
       dispatch(setColors(colors));
     },
   };
