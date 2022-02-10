@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "antd": "^3.26.13",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.0",
     "react-color": "^2.18.0",
